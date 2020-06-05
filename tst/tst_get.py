@@ -1,8 +1,8 @@
-# coding:utf-8
-from urllib import parse
-from urllib import request
+import json
 
-url = "http://0.0.0.0:8383/get_task/"
+import urllib3
+
+get_url = "http://0.0.0.0:8383/get_task/"
 data = {
     "id": "1"
 }
@@ -26,10 +26,18 @@ headers = {
 
 }
 
-data = parse.urlencode(data).encode('utf-8')
-# req = request.Request(url, headers=headers, data=data)  # POST方法
-req = request.Request(url + params)  # GET方法
-page = request.urlopen(req).read()
-page = page.decode('utf-8')
-
-print(page)
+encoded_data = json.dumps(data).encode("utf-8")
+http = urllib3.PoolManager()
+r = http.request(
+    "GET",
+    get_url,
+    body=encoded_data,
+    headers={
+        'content-type': 'application/json;charset=UTF-8'
+    }
+)
+if r.status == 200:
+    response = r.data
+    if len(response) > 0:
+        j = json.loads(response)
+        print(j)
