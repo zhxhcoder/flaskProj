@@ -2,7 +2,7 @@
 from urllib import parse
 from urllib import request
 
-url = "http://10.1.2.151/ctower-mall-c/sys/login/login.do"
+url = "http://0.0.0.0:8383/get_task/"
 data = {
     "id": "1"
 }
@@ -10,6 +10,9 @@ data = {
 params = "?"
 for key in data:
     params = params + key + "=" + data[key] + "&"
+
+params = params[:-1]
+
 print("Get方法参数：" + params)
 
 headers = {
@@ -25,7 +28,7 @@ headers = {
 
 data = parse.urlencode(data).encode('utf-8')
 # req = request.Request(url, headers=headers, data=data)  # POST方法
-req = request.Request(url+params)  # GET方法
+req = request.Request(url + params)  # GET方法
 page = request.urlopen(req).read()
 page = page.decode('utf-8')
 
