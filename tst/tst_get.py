@@ -13,18 +13,7 @@ for key in data:
 
 params = params[:-1]
 
-print("Get方法参数：" + params)
-
-headers = {
-    # heard部分直接通过chrome部分request header部分
-    'Accept': 'application/json, text/plain, */*',
-    'Accept-Encoding': 'gzip, deflate',
-    'Accept-Language': 'zh-CN,zh;q=0.8',
-    'Connection': 'keep-alive',
-    'Content-Length': '14',  # get方式提交的数据长度，如果是post方式，转成get方式：【id=wdb&pwd=wdb】
-    'Content-Type': 'application/x-www-form-urlencoded'
-
-}
+print("Get方法参数：" + get_url + params)
 
 encoded_data = json.dumps(data).encode("utf-8")
 http = urllib3.PoolManager()

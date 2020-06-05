@@ -4,8 +4,8 @@ import urllib3
 post_url = "http://0.0.0.0:8383/add_task/"
 
 data = {
-    "id": "1",
-    "info": "第一",
+    "id": "2",
+    "info": "第二",
 }
 encoded_data = json.dumps(data).encode("utf-8")
 http = urllib3.PoolManager()
