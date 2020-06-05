@@ -4,8 +4,7 @@ from urllib import request
 
 url = "http://10.1.2.151/ctower-mall-c/sys/login/login.do"
 data = {
-    "id": "wdb",
-    "pwd": "wdb"
+    "id": "1"
 }
 
 params = "?"
